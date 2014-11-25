@@ -1,10 +1,3 @@
-//
-//  notDisplay.h
-//  ArduinoTemplate
-//
-//  Created by David Skrundz on 2014-11-13.
-//  Copyright (c) 2014 davidskrundz. All rights reserved.
-//
 
 #ifndef ArduinoTemplate_notDisplay_h
 #define ArduinoTemplate_notDisplay_h

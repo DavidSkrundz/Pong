@@ -23,15 +23,17 @@
 //Sd2Card card;
 
 // "Objects"
+#include "notScore.h"
+#include "notSerial.h"
+#include "notGame.h"
 #include "notBall.h"
+#include "notPaddle.h"
 #include "notCollisions.h"
 #include "notDrawing.h"
 
-bool isHost = true;
-
 void setup() {
 	// Initialize Serial Port
-	Serial.begin(9600);
+	initSerial();
 	
 	// Screen
 	initDisplay();
@@ -51,13 +53,10 @@ void setup() {
 //	}
 //	Serial.println(" OK!");
 	
-	// Create the border for the whole game
-	addCollisionRect(0 * PIXEL_LENGTH, -SCREEN_HEIGHT * PIXEL_LENGTH, SCREEN_WIDTH * PIXEL_LENGTH, 2 * SCREEN_HEIGHT * PIXEL_LENGTH);
+	initScores();
+	initGame();
 	
-	// Create the paddles for the two players
-	addCollisionRect(5 * PIXEL_LENGTH, (SCREEN_HEIGHT - 15) * PIXEL_LENGTH, 20 * PIXEL_LENGTH, 5 * PIXEL_LENGTH);
-	
-	createBall(2000, 2000, 700,  0, 600);
+	startGame();
 }
 
 // The Game Loop
@@ -68,22 +67,24 @@ void loop() {
 	// Joystick Input
 	updateJoystick();
 	
-	// Clear Screen
-	undrawCircles();
-	undrawCollisionRects();
-	
-	// Update
-	moveBalls();
-	if (joystickGetHorizontal() > 50) {
-		collisionRects[1].x += 1 * PIXEL_LENGTH;
+	if (playingGame) {
+		gameCheck();
+		
+		// Update
+		if (joystickGetHorizontal() > 50) {
+			movePaddle(0, map(joystickGetHorizontal(), 50, 512, 1, 5) * PIXEL_LENGTH);
+		} else if (joystickGetHorizontal() < -50) {
+			movePaddle(0, -map(abs(joystickGetHorizontal()), 50, 512, 1, 5) * PIXEL_LENGTH);
+		}
+		moveBalls();
+		
+		// Redraw Screen
+		drawCircles();
+		drawPaddle();
+		drawScores();
 	}
-	if (joystickGetHorizontal() < -50) {
-		collisionRects[1].x -= 1 * PIXEL_LENGTH;
-	}
 	
-	// Redraw Screen
-	drawCircles();
-	drawCollisionRect();
+	long doneTime = millis();
 	
 	// Pause For The Rest Of The Frame
 	bool outOfTime = true;
@@ -92,6 +93,8 @@ void loop() {
 	}
 	if (outOfTime) {
 		// We Ran Out Of Time For The Frame So We Need To Optimize Or Give More Time (Reduce FPS)
-		Serial.println("Ran out of time for frame...");
+		Serial.print("Ran out of time for frame...Missed by ");
+		Serial.print(doneTime - frameTime);
+		Serial.println("ms.");
 	}
 }

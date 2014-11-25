@@ -1,10 +1,3 @@
-//
-//  notJoystick.h
-//  ArduinoTemplate
-//
-//  Created by David Skrundz on 2014-11-13.
-//  Copyright (c) 2014 davidskrundz. All rights reserved.
-//
 
 #ifndef ArduinoTemplate_notJoystick_h
 #define ArduinoTemplate_notJoystick_h
