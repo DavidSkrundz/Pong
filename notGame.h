@@ -1,4 +1,3 @@
-
 #ifndef ArduinoTemplate_notGame_h
 #define ArduinoTemplate_notGame_h
 
@@ -8,7 +7,7 @@
 #include "notSound.h"
 #include "notBall.h"
 
-#define WIN_SCORE 9
+#define WIN_SCORE 10
 
 bool playingGame = false;
 bool preGame = true;

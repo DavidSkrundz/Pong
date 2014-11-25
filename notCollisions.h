@@ -1,4 +1,3 @@
-
 #ifndef ArduinoTemplate_notCollisions_h
 #define ArduinoTemplate_notCollisions_h
 

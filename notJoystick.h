@@ -1,4 +1,3 @@
-
 #ifndef ArduinoTemplate_notJoystick_h
 #define ArduinoTemplate_notJoystick_h
 

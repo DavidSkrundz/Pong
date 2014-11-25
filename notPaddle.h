@@ -1,4 +1,3 @@
-
 #ifndef ArduinoTemplate_notPaddle_h
 #define ArduinoTemplate_notPaddle_h
 
@@ -16,7 +15,6 @@ typedef struct {
 	int rectIndex;
 	int leftCircleIndex;
 	int rightCircleIndex;
-	long velocity;
 	long x;
 	long y;
 	long oldX;
@@ -33,7 +31,6 @@ void createPaddle(long y) {
 	paddles[paddleCount].rectIndex = collisionRectsCount;
 	paddles[paddleCount].leftCircleIndex = collisionCirclesCount;
 	paddles[paddleCount].rightCircleIndex = collisionCirclesCount + 1;
-	paddles[paddleCount].velocity = 0;
 	paddles[paddleCount].y = y * PIXEL_LENGTH;
 	paddles[paddleCount].x = 5 * PIXEL_LENGTH;
 	paddles[paddleCount].oldX = paddles[paddleCount].x;

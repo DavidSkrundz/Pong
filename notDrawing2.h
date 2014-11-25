@@ -1,4 +1,3 @@
-
 #ifndef ArduinoTemplate_notDrawing2_h
 #define ArduinoTemplate_notDrawing2_h
 

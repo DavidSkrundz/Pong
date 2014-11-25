@@ -1,4 +1,3 @@
-
 #ifndef notBall_h
 #define notBall_h
 
