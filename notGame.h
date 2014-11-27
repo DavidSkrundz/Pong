@@ -57,6 +57,8 @@ void endGame() {
 	preGame = true;
 	postGame = false;
 	
+	resetSounds();
+	
 	removeBalls();
 	removeCollisionRects();
 	removeCollisionCircles();

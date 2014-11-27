@@ -62,6 +62,9 @@ void setup() {
 //	drawMainMenu();
 }
 
+bool didDraw = false;
+bool shouldDraw = false;
+
 // The Game Loop
 long frameLength = 1000 / 20; // 1000 ms / 20 FPS
 void loop() {
@@ -71,6 +74,16 @@ void loop() {
 	updateJoystick();
 	
 	if (playingGame) {
+		if (shouldDraw) {
+			if (!didDraw) {
+				didDraw = true;
+				resetSounds();
+				while (!playGameStartSound(false)) {}
+			}
+		} else {
+			shouldDraw = true;
+		}
+		
 		gameCheck();
 		
 		// Update
