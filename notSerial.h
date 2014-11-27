@@ -51,26 +51,23 @@ void serialStep() {
 			paddles[index].oldX = paddles[index].x;
 			paddles[index].oldWidth = paddles[index].width;
 			paddles[index].x = bowlings_read_from_serial3();
-			paddles[index].y = bowlings_read_from_serial3();
-			paddles[index].width = bowlings_read_from_serial3();
 		}
 	} else {
 		// Print
 		Serial3.write('P');
-		Serial3.write('0');
-		bowlings_write_to_serial3(paddles[0].x);
-		bowlings_write_to_serial3(paddles[0].y);
-		bowlings_write_to_serial3(paddles[0].width);
+		Serial3.write('1');
+		bowlings_write_to_serial3(SCREEN_WIDTH * PIXEL_LENGTH - paddles[0].x);
 		
 		// Read
 		int typeChar = Serial3.read();
+		Serial.print(typeChar);
 		if (typeChar == 'B') {
 			int index = Serial3.read() - '0';
 			balls[index].oldX = balls[index].x;
 			balls[index].oldY = balls[index].y;
 			balls[index].oldRadius = balls[index].radius;
-			balls[index].x = bowlings_read_from_serial3();
-			balls[index].y = bowlings_read_from_serial3();
+			balls[index].x = SCREEN_WIDTH * PIXEL_LENGTH - bowlings_read_from_serial3();
+			balls[index].y = -1 * bowlings_read_from_serial3();
 			balls[index].radius = bowlings_read_from_serial3();
 		}
 	}

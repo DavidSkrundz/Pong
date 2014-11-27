@@ -79,7 +79,9 @@ void loop() {
 		} else if (joystickGetHorizontal() < -50) {
 			movePaddle(0, -map(abs(joystickGetHorizontal()), 50, 512, 1, 5) * PIXEL_LENGTH);
 		}
-		moveBalls();
+		if (isHost) {
+			moveBalls();
+		}
 		
 		serialStep();
 		
