@@ -112,13 +112,13 @@ void drawGameMenu()
 		tft.print("Main Menu");
 	}
 
-	if(!selection && joystickDidPress )
+	if(selection && joystickDidPress )
 	{
 		drawMainMenu();
 		endGame();
 	}
 
-	if(selection && joystickDidPress)
+	if(!selection && joystickDidPress)
 	{
 		resumeGame();
 	}
