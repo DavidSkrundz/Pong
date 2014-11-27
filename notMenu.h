@@ -16,19 +16,19 @@ void drawMainMenu()
 	tft.setTextColor(RED);
 	tft.print(nameString);
     // Match start
-    tft.drawRect(64, 80, 30, 10, WHITE);
-    tft.setCursor(64, 80);
+    tft.drawRect(34, 80, 30, 12, WHITE);
+    tft.setCursor(36, 80);
     tft.setTextColor(WHITE);
     tft.print("Start");
     // Choose music
-    tft.drawRect(64, 100, 30, 10, WHITE);
+    tft.drawRect(34, 100, 30, 12, WHITE);
     // Draw music symbol so good
-    tft.fillCircle(100, 100, 7, WHITE);
-    tft.fillRect(100, 100, 3, 10, WHITE);
-    tft.drawLine(100, 110, 103, 107, WHITE);
-    tft.drawLine(101, 110, 104, 107, WHITE);
-    tft.drawLine(102, 110, 105, 107, WHITE);
-    tft.setCursor(64, 100);
+    tft.fillCircle(100, 100, 4, WHITE);
+    tft.fillRect(100, 90, 2, 10, WHITE);
+    tft.drawLine(100, 90, 103, 93, WHITE);
+    tft.drawLine(101, 90, 104, 93, WHITE);
+    tft.drawLine(102, 90, 105, 93, WHITE);
+    tft.setCursor(36, 100);
     tft.print("Music");
 
 }
