@@ -28,9 +28,33 @@ void startMatch() {
 
 void startGame() {
 	playingGame = true;
+	preGame = false;
+	postGame = false;
 	initScores();
 	
 	startMatch();
+}
+
+void pauseGame() {
+	playingGame = false;
+	preGame = false;
+	postGame = true;
+}
+
+void resumeGame() {
+	playingGame = true;
+	preGame = false;
+	postGame = false;
+}
+
+void endGame() {
+	playingGame = false;
+	preGame = true;
+	postGame = false;
+	
+	removeBalls();
+	removeCollisionRects();
+	removeCollisionCircles();
 }
 
 void gameCheck() {

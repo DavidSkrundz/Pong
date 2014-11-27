@@ -89,8 +89,8 @@ void loop() {
 		drawCircles();
 		drawPaddle();
 		drawScores();
-	} else {
-//		playMenuSound(true);
+	} else if (preGame) {
+		playMenuSound(true);
 		drawMainMenu();
 	}
 	

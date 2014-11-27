@@ -71,6 +71,10 @@ void removeCollisionCircle(long x, long y) {
 	}
 }
 
+void removeCollisionCircles() {
+	collisionCirclesCount = 0;
+}
+
 /*
  0000) No Collision
  0001) Horizontal Collision

@@ -11,20 +11,6 @@ int plancksToScreen(long plancks) {
 	return (int)(plancks * PLANCK_LENGTH / PIXEL_LENGTH);
 }
 
-//http://www.codecodex.com/wiki/Calculate_an_integer_square_root
-unsigned int sqrt32(unsigned long n) {
-	unsigned int c = 0x8000;
-	unsigned int g = 0x8000;
-	for(;;) {
-		if(g*g > n)
-			g ^= c;
-		c >>= 1;
-		if(c == 0)
-			return g;
-		g |= c;
-	}
-}
-
 long pointDistance(long x1, long y1, long x2, long y2) {
 	return sqrt(sq(x1 - x2) + sq(y1 - y2));
 }
