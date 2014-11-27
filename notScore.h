@@ -1,4 +1,3 @@
-
 #ifndef ArduinoTemplate_notScore_h
 #define ArduinoTemplate_notScore_h
 

@@ -58,6 +58,8 @@ void setup() {
 	initScores();
 	initSound();
 	initGame();
+	
+	drawMainMenu();
 }
 
 // The Game Loop
@@ -79,17 +81,18 @@ void loop() {
 		}
 		moveBalls();
 		
+		serialStep();
+		
 		// Redraw Screen
 		drawCircles();
 		drawPaddle();
 		drawScores();
 	} else {
 //		playMenuSound(true);
-		drawMainMenu();
+		
 	}
 	
 	long doneTime = millis();
-	
 	// Pause For The Rest Of The Frame
 	bool outOfTime = true;
 	while (millis() < frameTime) {

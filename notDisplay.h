@@ -1,4 +1,3 @@
-
 #ifndef ArduinoTemplate_notDisplay_h
 #define ArduinoTemplate_notDisplay_h
 

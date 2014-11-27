@@ -1,4 +1,3 @@
-
 #ifndef ArduinoTemplate_notGeometry_h
 #define ArduinoTemplate_notGeometry_h
 

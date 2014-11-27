@@ -1,4 +1,3 @@
-
 #ifndef ArduinoTemplate_notSound_h
 #define ArduinoTemplate_notSound_h
 

@@ -1,4 +1,3 @@
-
 #ifndef ArduinoTemplate_notMath_h
 #define ArduinoTemplate_notMath_h
 
