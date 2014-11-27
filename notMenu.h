@@ -114,8 +114,7 @@ void drawGameMenu()
 	if(!selection && joystickDidPress )
 	{
 		drawMainMenu();
-		playingGame = false;
-		preGame = true;
+		endGame();
 	}
 
 	if(selection && joystickDidPress)
