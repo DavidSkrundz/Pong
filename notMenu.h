@@ -49,11 +49,11 @@ void drawMainMenu()
     	tft.setTextColor(BLACK);
     	tft.print("Start");
     	// Unselected Music Button
-		tft.fillRect(32, 100, 64, 13, BLACK);
-    	tft.drawRect(32, 100, 64, 13, WHITE);
-    	tft.setTextColor(WHITE);
-    	tft.setCursor(50, 103);
-    	tft.print("Music");
+//		tft.fillRect(32, 100, 64, 13, BLACK);
+//    	tft.drawRect(32, 100, 64, 13, WHITE);
+//    	tft.setTextColor(WHITE);
+//    	tft.setCursor(50, 103);
+//    	tft.print("Music");
 //    }
 //    else
 //    {
@@ -76,6 +76,7 @@ void drawMainMenu()
 
 void drawGameMenu()
 {
+	pauseGame();
 	_selection();
     tft.fillScreen(BLACK);
 	tft.setCursor(32, 40);
@@ -102,10 +103,10 @@ void drawGameMenu()
 		tft.fillRect(32, 80, 64, 13, BLACK);
 		tft.drawRect(32, 80, 64, 13, WHITE);
 		tft.setCursor(50, 83);
-		tft.setTextColor(BLACK);
+		tft.setTextColor(WHITE);
 		tft.print("Return");
 		// Selected Main Menu
-		tft.fillRect(32, 100, 64, 13, WHITE);
+		tft.fillRect(20, 100, 64, 13, WHITE);
 		tft.setCursor(50, 103);
 		tft.setTextColor(BLACK);
 		tft.print("Main Menu");
@@ -119,7 +120,7 @@ void drawGameMenu()
 
 	if(selection && joystickDidPress)
 	{
-		//Stop drawing the menu, return to game
+		resumeGame();
 	}
 }
 
