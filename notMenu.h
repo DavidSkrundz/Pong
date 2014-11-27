@@ -5,9 +5,11 @@
 
 #include "notDisplay.h"
 #include "notJoystick.h"
+#include "notGame.h"
 
 char * nameString = "BattlePong";
 int selection = 0;
+int oldSelection = 0;
 
 
 int _selection()
@@ -26,23 +28,22 @@ int _selection()
 void drawMainMenu()
 {
 	_selection();
-//	tft.fillScreen(BLACK);
     // Print title
 	tft.setCursor(32, 40);
 	tft.setTextColor(RED);
 	tft.print(nameString);
 
     // Draw music symbol so good
-    tft.fillCircle(100, 106, 4, WHITE);
-    tft.fillRect(100, 96, 2, 10, WHITE);
-    tft.drawLine(100, 96, 103, 99, WHITE);
-    tft.drawLine(101, 96, 104, 99, WHITE);
-    tft.drawLine(102, 96, 105, 99, WHITE);
+//    tft.fillCircle(101, 106, 4, WHITE);
+//    tft.fillRect(101, 96, 2, 10, WHITE);
+//    tft.drawLine(101, 96, 104, 99, WHITE);
+//    tft.drawLine(102, 96, 105, 99, WHITE);
+//    tft.drawLine(103, 96, 106, 99, WHITE);
 
 
     // Match start
-    if (!selection)
-    {
+//    if (!selection)
+//    {
     	tft.fillRect(32, 80, 64, 13, WHITE);
     	tft.setCursor(50, 83);
     	tft.setTextColor(BLACK);
@@ -53,20 +54,21 @@ void drawMainMenu()
     	tft.setTextColor(WHITE);
     	tft.setCursor(50, 103);
     	tft.print("Music");
-    }
-    else
-    {
-        tft.fillRect(32, 80, 64, 13, BLACK);
-		tft.drawRect(32, 80, 64, 13, WHITE);
-		tft.setCursor(50, 83);
-		tft.setTextColor(WHITE);
-		tft.print("Start");
-		// Selected music button
-		tft.fillRect(32, 100, 64, 13, WHITE);
-		tft.setCursor(50, 103);
-		tft.setTextColor(BLACK);
-		tft.print("Start");
-    }
+//    }
+//    else
+//    {
+//        tft.fillRect(32, 80, 64, 13, BLACK);
+//		tft.drawRect(32, 80, 64, 13, WHITE);
+//		tft.setCursor(50, 83);
+//		tft.setTextColor(WHITE);
+//		tft.print("Start");
+//		// Selected music button
+//		tft.fillRect(32, 100, 64, 13, WHITE);
+//		tft.setCursor(50, 103);
+//		tft.setTextColor(BLACK);
+//		tft.print("Music");
+//    }
+	if
 
 }
 
@@ -80,11 +82,12 @@ void drawGameMenu()
 
 	if (!selection)
 	{
+		//Selected Return
 		tft.fillRect(32, 80, 64, 13, WHITE);
 		tft.setCursor(50, 83);
 		tft.setTextColor(BLACK);
 		tft.print("Return");
-		//Unselected Main Menu
+		//Deselected Main Menu
 		tft.fillRect(32, 100, 64, 13, BLACK);
 		tft.drawRect(32, 100, 64, 13, WHITE);
 		tft.setCursor(50, 103);
@@ -93,6 +96,7 @@ void drawGameMenu()
 	}
 	else
 	{
+		//Deselected Return
 		tft.fillRect(32, 80, 64, 13, BLACK);
 		tft.drawRect(32, 80, 64, 13, WHITE);
 		tft.setCursor(50, 83);
@@ -103,6 +107,18 @@ void drawGameMenu()
 		tft.setCursor(50, 103);
 		tft.setTextColor(BLACK);
 		tft.print("Main Menu");
+	}
+
+	if(!selection && joystickDidPress )
+	{
+		drawMainMenu();
+		playingGame = false;
+		preGame = true;
+	}
+
+	if(selection && joystickDidPress)
+	{
+		//Stop drawing the menu, return to game
 	}
 }
 
