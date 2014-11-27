@@ -86,13 +86,13 @@ void drawGameMenu()
 	{
 		//Selected Return
 		tft.fillRect(32, 80, 64, 13, WHITE);
-		tft.setCursor(50, 83);
+		tft.setCursor(47, 83);
 		tft.setTextColor(BLACK);
 		tft.print("Return");
 		//Deselected Main Menu
 		tft.fillRect(32, 100, 64, 13, BLACK);
 		tft.drawRect(32, 100, 64, 13, WHITE);
-		tft.setCursor(50, 103);
+		tft.setCursor(38, 103);
 		tft.setTextColor(WHITE);
 		tft.print("Main menu");
 	}
@@ -101,12 +101,12 @@ void drawGameMenu()
 		//Deselected Return
 		tft.fillRect(32, 80, 64, 13, BLACK);
 		tft.drawRect(32, 80, 64, 13, WHITE);
-		tft.setCursor(50, 83);
+		tft.setCursor(47, 83);
 		tft.setTextColor(WHITE);
 		tft.print("Return");
 		// Selected Main Menu
-		tft.fillRect(20, 100, 64, 13, WHITE);
-		tft.setCursor(50, 103);
+		tft.fillRect(32, 100, 64, 13, WHITE);
+		tft.setCursor(38, 103);
 		tft.setTextColor(BLACK);
 		tft.print("Main Menu");
 	}
@@ -116,6 +116,7 @@ void drawGameMenu()
 		joystickDidPress = false;
 		drawMainMenu();
 		endGame();
+		selection = 0;
 	}
 
 	if(!selection && joystickDidPress)
