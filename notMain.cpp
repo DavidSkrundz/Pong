@@ -23,6 +23,7 @@
 //Sd2Card card;
 
 // "Objects"
+#include "notSound.h"
 #include "notScore.h"
 #include "notSerial.h"
 #include "notGame.h"
@@ -30,6 +31,7 @@
 #include "notPaddle.h"
 #include "notCollisions.h"
 #include "notDrawing.h"
+#include "notMenu.h"
 
 void setup() {
 	// Initialize Serial Port
@@ -54,9 +56,8 @@ void setup() {
 //	Serial.println(" OK!");
 	
 	initScores();
+	initSound();
 	initGame();
-	
-	startGame();
 }
 
 // The Game Loop
@@ -82,6 +83,9 @@ void loop() {
 		drawCircles();
 		drawPaddle();
 		drawScores();
+	} else {
+//		playMenuSound(true);
+		drawMainMenu();
 	}
 	
 	long doneTime = millis();

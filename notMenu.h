@@ -8,21 +8,13 @@
 
 char * nameString = "BattlePong";
 
-// Draws a string as long as it exists on one line
-void drawString(char * String, uint16_t x, uint16_t y, uint8_t size, uint16_t Color)
-{
-    for (int i = 0; i < sizeof(String)/sizeof(char); i++)
-    {
-        drawChar(x, y, String[i], Color, size)
-        x+=size;
-    }
-}
-
 void drawMainMenu()
 {
-    tft.fillscreen(BLACK);
+	tft.fillScreen(BLACK);
     // Start match
-    drawString(nameString, 32, 80, 10, BLUE);
+	tft.setCursor(32, 80);
+	tft.setTextColor(BLUE);
+	tft.print(nameString);
     tft.drawRect(64, 40, 30, 10, WHITE);
     // Choose music
 
@@ -30,7 +22,7 @@ void drawMainMenu()
 
 void drawGameMenu()
 {
-    tft.fillscreen(BLACK);
+    tft.fillScreen(BLACK);
     // Continue
     tft.drawRect(64, 80, 30, 10, WHITE);
     // Back to main menu

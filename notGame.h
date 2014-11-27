@@ -1,10 +1,3 @@
-//
-//  notGame.h
-//  ArduinoTemplate
-//
-//  Created by David Skrundz on 2014-11-25.
-//  Copyright (c) 2014 davidskrundz. All rights reserved.
-//
 
 #ifndef ArduinoTemplate_notGame_h
 #define ArduinoTemplate_notGame_h
@@ -15,7 +8,11 @@
 #include "notSound.h"
 #include "notBall.h"
 
+#define WIN_SCORE 9
+
 bool playingGame = false;
+bool preGame = true;
+bool postGame = false;
 
 void initGame() {
 	// Create the border for the whole game
@@ -33,7 +30,6 @@ void startMatch() {
 void startGame() {
 	playingGame = true;
 	initScores();
-	playStartSound();
 	
 	startMatch();
 }
@@ -41,6 +37,19 @@ void startGame() {
 void gameCheck() {
 	if (ballCount < 1) {
 		startMatch();
+	}
+	// Win check
+	if (scores[0].newScore >= WIN_SCORE) {
+		postGame = true;
+		playingGame = false;
+		// Local Player Wins
+		
+	}
+	if (scores[1].newScore >= WIN_SCORE) {
+		postGame = true;
+		playingGame = false;
+		// Other Player Wins
+		
 	}
 }
 

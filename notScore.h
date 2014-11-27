@@ -1,10 +1,3 @@
-//
-//  notScore.h
-//  ArduinoTemplate
-//
-//  Created by David Skrundz on 2014-11-25.
-//  Copyright (c) 2014 davidskrundz. All rights reserved.
-//
 
 #ifndef ArduinoTemplate_notScore_h
 #define ArduinoTemplate_notScore_h
