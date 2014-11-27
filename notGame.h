@@ -37,19 +37,19 @@ void gameCheck() {
 	if (ballCount < 1) {
 		startMatch();
 	}
-	// Win check
-	if (scores[0].newScore >= WIN_SCORE) {
-		postGame = true;
-		playingGame = false;
-		// Local Player Wins
-		
-	}
-	if (scores[1].newScore >= WIN_SCORE) {
-		postGame = true;
-		playingGame = false;
-		// Other Player Wins
-		
-	}
+//	// Win check
+//	if (scores[0].newScore >= WIN_SCORE) {
+//		postGame = true;
+//		playingGame = false;
+//		// Local Player Wins
+//		
+//	}
+//	if (scores[1].newScore >= WIN_SCORE) {
+//		postGame = true;
+//		playingGame = false;
+//		// Other Player Wins
+//		
+//	}
 }
 
 #endif

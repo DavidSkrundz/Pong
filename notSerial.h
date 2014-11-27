@@ -47,17 +47,14 @@ void serialStep() {
 		// Read
 		int typeChar = Serial3.read();
 		if (typeChar == 'P') {
-			int index = Serial3.read() - '0';
-			paddles[index].oldX = paddles[index].x;
-			paddles[index].oldWidth = paddles[index].width;
-			paddles[index].x = bowlings_read_from_serial3();
+			paddles[1].oldX = paddles[1].x;
+			movePaddle(1, bowlings_read_from_serial3() - paddles[1].x);
 		}
 	} else {
 		// Print
 		Serial3.write('P');
-		Serial3.write('1');
 		bowlings_write_to_serial3(SCREEN_WIDTH * PIXEL_LENGTH - paddles[0].x);
-		
+
 		// Read
 		int typeChar = Serial3.read();
 		Serial.print(typeChar);
