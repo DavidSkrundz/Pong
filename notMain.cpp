@@ -55,11 +55,7 @@ void setup() {
 //	}
 //	Serial.println(" OK!");
 	
-	initScores();
 	initSound();
-	initGame();
-	
-//	drawMainMenu();
 }
 
 bool didDraw = false;

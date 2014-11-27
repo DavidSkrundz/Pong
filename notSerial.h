@@ -7,7 +7,7 @@
 #include "notPaddle.h"
 #include "notScore2.h"
 
-bool isHost = false;
+bool isHost = true;
 
 void initSerial() {
 	// Open

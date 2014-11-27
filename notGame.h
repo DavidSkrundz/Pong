@@ -24,7 +24,7 @@ void initGame() {
 }
 
 void startMatch() {
-	createBall(20 * PIXEL_LENGTH, 20 * PIXEL_LENGTH, 7 * PIXEL_LENGTH,  0 * PIXEL_LENGTH, 6 * PIXEL_LENGTH);
+	createBall(20 * PIXEL_LENGTH, 20 * PIXEL_LENGTH, 3 * PIXEL_LENGTH,  0 * PIXEL_LENGTH, 6 * PIXEL_LENGTH);
 }
 
 void startGame() {
@@ -33,6 +33,7 @@ void startGame() {
 	preGame = false;
 	postGame = false;
 	initScores();
+	initGame();
 	
 	startMatch();
 }

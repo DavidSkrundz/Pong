@@ -77,6 +77,17 @@ void drawCircle(long x, long y, long r, int color) {
 			tft.drawFastHLine(x - 1, y - 2, 3, color);
 			break;
 		}
+		case 3: {
+			tft.drawFastVLine(x - 3, y - 1, 3, color);
+			tft.drawFastVLine(x + 3, y - 1, 3, color);
+			tft.drawFastHLine(x - 1, y + 3, 3, color);
+			tft.drawFastHLine(x - 1, y - 3, 3, color);
+			tft.drawPixel(x - 2, y + 2, color);
+			tft.drawPixel(x - 2, y - 2, color);
+			tft.drawPixel(x + 2, y + 2, color);
+			tft.drawPixel(x + 2, y - 2, color);
+			break;
+		}
 		case 7: {
 			tft.drawFastVLine(x - 7, y - 2, 5, color);
 			tft.drawFastVLine(x + 7, y - 2, 5, color);

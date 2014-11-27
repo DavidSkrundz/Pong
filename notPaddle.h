@@ -32,7 +32,7 @@ void createPaddle(long y) {
 	paddles[paddleCount].leftCircleIndex = collisionCirclesCount;
 	paddles[paddleCount].rightCircleIndex = collisionCirclesCount + 1;
 	paddles[paddleCount].y = y * PIXEL_LENGTH;
-	paddles[paddleCount].x = 5 * PIXEL_LENGTH;
+	paddles[paddleCount].x = ((SCREEN_WIDTH / 2) - 5) * PIXEL_LENGTH;
 	paddles[paddleCount].oldX = paddles[paddleCount].x;
 	paddles[paddleCount].width = 20 * PIXEL_LENGTH;
 	paddles[paddleCount].oldWidth = paddles[paddleCount].width;

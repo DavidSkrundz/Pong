@@ -87,20 +87,21 @@ void moveBall(int index) {
 	balls[index].oldY = balls[index].y;
 	long totalIncrease = 0;
 	long increaseAmount = 4 * PIXEL_LENGTH;
-	for (int i = 0; i < max(abs(xSpeed), abs(ySpeed)); ++i) {
+	int amount = 10;
+	for (int i = 0; i < max(abs(xSpeed), abs(ySpeed)); i += amount) {
 		if (xSpeed > 0) {
-			balls[index].x += 1;
-			xSpeed -= 1;
+			balls[index].x += amount;
+			xSpeed -= amount;
 		} else if (xSpeed < 0) {
-			balls[index].x -= 1;
-			xSpeed += 1;
+			balls[index].x -= amount;
+			xSpeed += amount;
 		}
 		if (ySpeed > 0) {
-			balls[index].y += 1;
-			ySpeed -= 1;
+			balls[index].y += amount;
+			ySpeed -= amount;
 		} else if (ySpeed < 0) {
-			balls[index].y -= 1;
-			ySpeed += 1;
+			balls[index].y -= amount;
+			ySpeed += amount;
 		}
 		// Check for collisions
 		int collisions = checkRectCollisionWithCircle(balls[index].x, balls[index].y, balls[index].radius);
