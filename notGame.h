@@ -19,7 +19,7 @@ void initGame() {
 	
 	// Create the paddles for the two players
 	createPaddle(SCREEN_HEIGHT - 15);
-	addCollisionRect(5 * PIXEL_LENGTH, -(SCREEN_HEIGHT - 15) * PIXEL_LENGTH, 20 * PIXEL_LENGTH, 5 * PIXEL_LENGTH); // OTHER
+	createPaddle(5 - SCREEN_HEIGHT);
 }
 
 void startMatch() {

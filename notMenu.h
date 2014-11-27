@@ -10,21 +10,23 @@ char * nameString = "BattlePong";
 int selection = 0;
 
 
-void selection()
+int _selection()
 {
-	if (joystickGetVertical > joystickVerticalRest + 10)
+	if (joystickGetVertical() < -10)
 	{
 		selection = 0;
 	}
-	else if(joystickGetVertical < joystickVerticalRest - 10)
+	else if(joystickGetVertical() > 10)
 	{
 		selection = 1;
 	}
+	return selection;
 }
 
 void drawMainMenu()
 {
-	tft.fillScreen(BLACK);
+	_selection();
+//	tft.fillScreen(BLACK);
     // Print title
 	tft.setCursor(32, 40);
 	tft.setTextColor(RED);
@@ -46,6 +48,7 @@ void drawMainMenu()
     	tft.setTextColor(BLACK);
     	tft.print("Start");
     	// Unselected Music Button
+		tft.fillRect(32, 100, 64, 13, BLACK);
     	tft.drawRect(32, 100, 64, 13, WHITE);
     	tft.setTextColor(WHITE);
     	tft.setCursor(50, 103);
@@ -69,6 +72,7 @@ void drawMainMenu()
 
 void drawGameMenu()
 {
+	_selection();
     tft.fillScreen(BLACK);
 	tft.setCursor(32, 40);
 	tft.setTextColor(RED);

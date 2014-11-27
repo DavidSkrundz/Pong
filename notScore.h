@@ -1,15 +1,8 @@
 #ifndef ArduinoTemplate_notScore_h
 #define ArduinoTemplate_notScore_h
 
-// Defines
-#define SCORE_COUNT 2
-
-typedef struct {
-	int oldScore;
-	int newScore;
-} Score;
-
-Score scores[SCORE_COUNT];
+#include "notSerial.h"
+#include "notScore2.h"
 
 void initScores() {
 	scores[0].oldScore = 0;
@@ -22,11 +15,17 @@ void initScores() {
 void localPlayerScored() {
 	scores[0].oldScore = scores[0].newScore;
 	scores[0].newScore += 1;
+	bowlings_write_to_serial3(3L);
+	bowlings_write_to_serial3(scores[0].newScore);
+	bowlings_write_to_serial3(scores[1].newScore);
 }
 
 void otherPlayerScored() {
 	scores[1].oldScore = scores[1].newScore;
 	scores[1].newScore += 1;
+	bowlings_write_to_serial3(3L);
+	bowlings_write_to_serial3(scores[0].newScore);
+	bowlings_write_to_serial3(scores[1].newScore);
 }
 
 #endif

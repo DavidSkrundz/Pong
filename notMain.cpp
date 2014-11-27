@@ -59,7 +59,7 @@ void setup() {
 	initSound();
 	initGame();
 	
-	drawMainMenu();
+//	drawMainMenu();
 }
 
 // The Game Loop
@@ -91,7 +91,7 @@ void loop() {
 		drawScores();
 	} else {
 //		playMenuSound(true);
-		
+		drawMainMenu();
 	}
 	
 	long doneTime = millis();
