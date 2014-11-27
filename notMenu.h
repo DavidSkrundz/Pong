@@ -68,8 +68,10 @@ void drawMainMenu()
 //		tft.setTextColor(BLACK);
 //		tft.print("Music");
 //    }
-	if
-
+	if(joystickDidPress)
+	{
+		startGame();
+	}
 }
 
 void drawGameMenu()
