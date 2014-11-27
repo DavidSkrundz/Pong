@@ -11,12 +11,25 @@ char * nameString = "BattlePong";
 void drawMainMenu()
 {
 	tft.fillScreen(BLACK);
-    // Start match
-	tft.setCursor(32, 80);
-	tft.setTextColor(BLUE);
+    // Print title
+	tft.setCursor(32, 40);
+	tft.setTextColor(RED);
 	tft.print(nameString);
-    tft.drawRect(64, 40, 30, 10, WHITE);
+    // Match start
+    tft.drawRect(64, 80, 30, 10, WHITE);
+    tft.setCursor(64, 80);
+    tft.setTextColor(WHITE);
+    tft.print("Start");
     // Choose music
+    tft.drawRect(64, 100, 30, 10, WHITE);
+    // Draw music symbol so good
+    tft.fillCircle(100, 100, 7, WHITE);
+    tft.fillRect(100, 100, 3, 10, WHITE);
+    tft.drawLine(100, 110, 103, 107, WHITE);
+    tft.drawLine(101, 110, 104, 107, WHITE);
+    tft.drawLine(102, 110, 105, 107, WHITE);
+    tft.setCursor(64, 100);
+    tft.print("Music");
 
 }
 
@@ -26,6 +39,7 @@ void drawGameMenu()
     // Continue
     tft.drawRect(64, 80, 30, 10, WHITE);
     // Back to main menu
+    tft.drawRect(64, 100, 30, 10, WHITE);
 }
 
 #endif
