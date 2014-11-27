@@ -78,7 +78,7 @@ void drawMainMenu()
 void drawGameMenu()
 {
 	_selection();
-	tft.setCursor(32, 40);
+	tft.setCursor(50, 40);
 	tft.setTextColor(RED);
 	tft.print("Pause");
 
