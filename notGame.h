@@ -6,6 +6,7 @@
 #include "notPaddle.h"
 #include "notSound.h"
 #include "notBall.h"
+#include "notDisplay.h"
 
 #define WIN_SCORE 10
 
@@ -27,6 +28,7 @@ void startMatch() {
 }
 
 void startGame() {
+	tft.fillScreen(BLACK);
 	playingGame = true;
 	preGame = false;
 	postGame = false;
@@ -36,18 +38,21 @@ void startGame() {
 }
 
 void pauseGame() {
+	tft.fillScreen(BLACK);
 	playingGame = false;
 	preGame = false;
 	postGame = true;
 }
 
 void resumeGame() {
+	tft.fillScreen(BLACK);
 	playingGame = true;
 	preGame = false;
 	postGame = false;
 }
 
 void endGame() {
+	tft.fillScreen(BLACK);
 	playingGame = false;
 	preGame = true;
 	postGame = false;

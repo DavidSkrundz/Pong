@@ -92,6 +92,12 @@ void loop() {
 	} else if (preGame) {
 		playMenuSound(true);
 		drawMainMenu();
+	} else if (postGame) {
+		drawGameMenu();
+	}
+	
+	if (joystickDidPress) {
+		pauseGame();
 	}
 	
 	long doneTime = millis();

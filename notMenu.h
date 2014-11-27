@@ -70,15 +70,14 @@ void drawMainMenu()
 //    }
 	if(joystickDidPress)
 	{
+		joystickDidPress = false;
 		startGame();
 	}
 }
 
 void drawGameMenu()
 {
-	pauseGame();
 	_selection();
-    tft.fillScreen(BLACK);
 	tft.setCursor(32, 40);
 	tft.setTextColor(RED);
 	tft.print("Pause");
@@ -114,12 +113,14 @@ void drawGameMenu()
 
 	if(selection && joystickDidPress )
 	{
+		joystickDidPress = false;
 		drawMainMenu();
 		endGame();
 	}
 
 	if(!selection && joystickDidPress)
 	{
+		joystickDidPress = false;
 		resumeGame();
 	}
 }
