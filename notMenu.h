@@ -12,27 +12,23 @@ int selection = 0;
 int oldSelection = 2;
 
 
-int _selection()
-{
-	if (joystickGetVertical() < -10)
-	{
+int _selection() {
+	if (joystickGetVertical() < -10) {
 		selection = 0;
 	}
-	else if(joystickGetVertical() > 10)
-	{
+	else if(joystickGetVertical() > 10) {
 		selection = 1;
 	}
 	return selection;
 }
 
-void drawMainMenu()
-{
+void drawMainMenu() {
 	_selection();
     // Print title
 	tft.setCursor(32, 40);
 	tft.setTextColor(RED);
 	tft.print(nameString);
-	
+
 	// Match start
 	if (selection != oldSelection) {
 		oldSelection = selection;
@@ -74,8 +70,7 @@ void drawMainMenu()
 	}
 }
 
-void drawGameMenu()
-{
+void drawGameMenu() {
 	_selection();
 	tft.setCursor(50, 40);
 	tft.setTextColor(RED);
@@ -83,8 +78,7 @@ void drawGameMenu()
 
 	if (selection != oldSelection) {
 		oldSelection = selection;
-		if (!selection)
-		{
+		if (!selection) {
 			//Selected Return
 			tft.fillRect(32, 80, 64, 13, WHITE);
 			tft.setCursor(47, 83);
@@ -96,9 +90,7 @@ void drawGameMenu()
 			tft.setCursor(38, 103);
 			tft.setTextColor(WHITE);
 			tft.print("Main menu");
-		}
-		else
-		{
+		} else {
 			//Deselected Return
 			tft.fillRect(32, 80, 64, 13, BLACK);
 			tft.drawRect(32, 80, 64, 13, WHITE);
@@ -112,7 +104,7 @@ void drawGameMenu()
 			tft.print("Main Menu");
 		}
 	}
-	
+
 	if (joystickDidPress) {
 		joystickDidPress = false;
 		if (selection) {
