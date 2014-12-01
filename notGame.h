@@ -7,12 +7,10 @@
 #include "notSound.h"
 #include "notBall.h"
 #include "notDisplay.h"
+#include "notStates.h"
+#include "notSerial.h"
 
 #define WIN_SCORE 10
-
-bool playingGame = false;
-bool preGame = true;
-bool postGame = false;
 
 void initGame() {
 	// Create the border for the whole game
@@ -20,13 +18,28 @@ void initGame() {
 	
 	// Create the paddles for the two players
 	createPaddle(SCREEN_HEIGHT - 15);
-	createPaddle(5 - SCREEN_HEIGHT);
+	if (isHost) {
+		createPaddle(10 - SCREEN_HEIGHT);
+	}
 }
 
 void startMatch() {
+	long code = -1;
 	if (isHost) {
+		bowlings_write_to_serial3(11UL);
+		while (code != 10) {
+			if (Serial3.available()) {
+				code = bowlings_read_from_serial3();
+			}
+		}
 		createBall(20 * PIXEL_LENGTH, 20 * PIXEL_LENGTH, 3 * PIXEL_LENGTH,  0 * PIXEL_LENGTH, 6 * PIXEL_LENGTH);
 	} else {
+		while (code != 11) {
+			if (Serial3.available()) {
+				code = bowlings_read_from_serial3();
+			}
+		}
+		bowlings_write_to_serial3(10UL);
 		createBall(-20 * PIXEL_LENGTH, -20 * PIXEL_LENGTH, 3 * PIXEL_LENGTH,  0 * PIXEL_LENGTH, 6 * PIXEL_LENGTH);
 	}
 }
@@ -74,19 +87,21 @@ void gameCheck() {
 	if (ballCount < 1) {
 		startMatch();
 	}
-//	// Win check
-//	if (scores[0].newScore >= WIN_SCORE) {
-//		postGame = true;
-//		playingGame = false;
-//		// Local Player Wins
-//		
-//	}
-//	if (scores[1].newScore >= WIN_SCORE) {
-//		postGame = true;
-//		playingGame = false;
-//		// Other Player Wins
-//		
-//	}
+	// Win check
+	if (scores[0].newScore >= WIN_SCORE) {
+		postGame = true;
+		playingGame = false;
+		// Local Player Wins
+		win = true;
+		bowlings_write_to_serial3(5UL);
+	}
+	if (scores[1].newScore >= WIN_SCORE) {
+		postGame = true;
+		playingGame = false;
+		// Other Player Wins
+		lose = true;
+		bowlings_write_to_serial3(6UL);
+	}
 }
 
 #endif

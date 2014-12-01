@@ -69,7 +69,11 @@ void loop() {
 	// Joystick Input
 	updateJoystick();
 	
-	if (playingGame) {
+	if (win) {
+		drawWinState();
+	} else if (lose) {
+		drawLoseState();
+	} else if (playingGame) {
 		if (shouldDraw) {
 			if (!didDraw) {
 				didDraw = true;

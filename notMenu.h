@@ -125,4 +125,48 @@ void drawGameMenu()
 	}
 }
 
+void drawWinState() {
+	tft.setCursor(42, 40);
+	tft.setTextColor(RED);
+	tft.print("You Win!");
+	if (selection != oldSelection) {
+		oldSelection = selection;
+		tft.fillScreen(BLACK);
+		// Selected Main Menu
+		tft.fillRect(32, 100, 64, 13, WHITE);
+		tft.setCursor(38, 103);
+		tft.setTextColor(BLACK);
+		tft.print("Main Menu");
+	}
+	if (joystickDidPress) {
+		joystickDidPress = false;
+		win = false;
+		endGame();
+		selection = 0;
+		oldSelection = 2;
+	}
+}
+
+void drawLoseState() {
+	tft.setCursor(42, 40);
+	tft.setTextColor(RED);
+	tft.print("You Lose");
+	if (selection != oldSelection) {
+		oldSelection = selection;
+		tft.fillScreen(BLACK);
+		// Selected Main Menu
+		tft.fillRect(32, 100, 64, 13, WHITE);
+		tft.setCursor(38, 103);
+		tft.setTextColor(BLACK);
+		tft.print("Main Menu");
+	}
+	if (joystickDidPress) {
+		joystickDidPress = false;
+		lose = false;
+		endGame();
+		selection = 0;
+		oldSelection = 2;
+	}
+}
+
 #endif

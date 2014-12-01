@@ -6,6 +6,7 @@
 #include "notBall.h"
 #include "notPaddle.h"
 #include "notScore2.h"
+#include "notStates.h"
 
 bool isHost = false;
 
@@ -36,50 +37,63 @@ unsigned long bowlings_read_from_serial3() {
 	return num;
 }
 
+void waitForByteCount(int count) {
+	while (Serial.available() < count) {}
+}
+
 void serialStep() {
 	if (isHost) {
 		// Print the data
-		bowlings_write_to_serial3(1L);
-		bowlings_write_to_serial3(0L);
-		bowlings_write_to_serial3(balls[0].x);
-		bowlings_write_to_serial3(balls[0].y);
-		bowlings_write_to_serial3(balls[0].radius);
+		if (balls[0].y < 30 * PIXEL_LENGTH) {
+			bowlings_write_to_serial3(1UL);
+			bowlings_write_to_serial3(0UL);
+			bowlings_write_to_serial3(balls[0].x);
+			bowlings_write_to_serial3(balls[0].y);
+			bowlings_write_to_serial3(balls[0].radius);
+		}
 		
 		// Read
 		while (Serial3.available()) {
 			long code = bowlings_read_from_serial3();
-			if (code == 2L) {
+			if (code == 2UL) {
+				waitForByteCount(4);
 				paddles[1].oldX = paddles[1].x;
 				movePaddle(1, bowlings_read_from_serial3() - paddles[1].x);
 			}
 		}
 	} else {
 		// Print
-		bowlings_write_to_serial3(2L);
+		bowlings_write_to_serial3(2UL);
 		bowlings_write_to_serial3(SCREEN_WIDTH * PIXEL_LENGTH - paddles[0].x - paddles[0].width);
 		
 		// Read
-		balls[0].oldX = balls[1].x;
-		balls[0].oldY = balls[1].y;
+		balls[0].oldX = balls[0].x;
+		balls[0].oldY = balls[0].y;
 		scores[1].oldScore = scores[1].newScore;
 		scores[0].oldScore = scores[0].newScore;
 		while (Serial3.available()) {
+			waitForByteCount(4);
 			long code = bowlings_read_from_serial3();
-			if (code == 1L) {
+			if (code == 1UL) {
+				waitForByteCount(4);
 				long index = bowlings_read_from_serial3();
 				balls[index].oldRadius = balls[index].radius;
+				waitForByteCount(4);
 				balls[index].x = SCREEN_WIDTH * PIXEL_LENGTH - bowlings_read_from_serial3();
+				waitForByteCount(4);
 				balls[index].y = -1 * bowlings_read_from_serial3();
+				waitForByteCount(4);
 				balls[index].radius = bowlings_read_from_serial3();
-			}
-			if (code == 3L) {
+			} else if (code == 3UL) {
+				waitForByteCount(4);
 				scores[1].newScore = bowlings_read_from_serial3();
+				waitForByteCount(4);
 				scores[0].newScore = bowlings_read_from_serial3();
+			} else if (code == 5UL) {
+				lose = true;
+			} else if (code == 6UL) {
+				win = true;
 			}
-//			if (typeChar == 'P') {
-//				paddles[0].oldWidth = paddles[0].width;
-//				paddles[0].width = bowlings_read_from_serial3();
-//			}
 		}
 	}
 }
