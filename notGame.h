@@ -32,7 +32,7 @@ void startMatch() {
 //				code = Serial3.read();
 //			}
 //		}
-		createBall(20 * PIXEL_LENGTH, 20 * PIXEL_LENGTH, 3 * PIXEL_LENGTH,  0 * PIXEL_LENGTH, 6 * PIXEL_LENGTH);
+		createBall(SCREEN_WIDTH / 2 * PIXEL_LENGTH, 20 * PIXEL_LENGTH, 3 * PIXEL_LENGTH,  0 * PIXEL_LENGTH, 6 * PIXEL_LENGTH);
 	} else {
 //		while (code != 11) {
 //			if (Serial3.available()) {
@@ -93,14 +93,16 @@ void gameCheck() {
 		playingGame = false;
 		// Local Player Wins
 		win = true;
-		bowlings_write_to_serial3(5UL);
+		writeInt(5);
+//		bowlings_write_to_serial3(5UL);
 	}
 	if (scores[1].newScore >= WIN_SCORE) {
 		postGame = true;
 		playingGame = false;
 		// Other Player Wins
 		lose = true;
-		bowlings_write_to_serial3(6UL);
+		writeInt(6);
+//		bowlings_write_to_serial3(6UL);
 	}
 }
 

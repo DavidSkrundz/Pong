@@ -15,7 +15,8 @@ void initScores() {
 void localPlayerScored() {
 	scores[0].oldScore = scores[0].newScore;
 	scores[0].newScore += 1;
-	bowlings_write_to_serial3(3UL);
+//	bowlings_write_to_serial3(3UL);
+	writeInt(3);
 	bowlings_write_to_serial3(scores[0].newScore);
 	bowlings_write_to_serial3(scores[1].newScore);
 }
@@ -23,7 +24,8 @@ void localPlayerScored() {
 void otherPlayerScored() {
 	scores[1].oldScore = scores[1].newScore;
 	scores[1].newScore += 1;
-	bowlings_write_to_serial3(3UL);
+	writeInt(3);
+//	bowlings_write_to_serial3(3UL);
 	bowlings_write_to_serial3(scores[0].newScore);
 	bowlings_write_to_serial3(scores[1].newScore);
 }
