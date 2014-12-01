@@ -7,7 +7,7 @@
 #include "notPaddle.h"
 #include "notScore2.h"
 
-bool isHost = true;
+bool isHost = false;
 
 void initSerial() {
 	// Open
@@ -59,21 +59,21 @@ void serialStep() {
 		bowlings_write_to_serial3(SCREEN_WIDTH * PIXEL_LENGTH - paddles[0].x - paddles[0].width);
 		
 		// Read
+		balls[0].oldX = balls[1].x;
+		balls[0].oldY = balls[1].y;
+		scores[1].oldScore = scores[1].newScore;
+		scores[0].oldScore = scores[0].newScore;
 		while (Serial3.available()) {
 			long code = bowlings_read_from_serial3();
 			if (code == 1L) {
 				long index = bowlings_read_from_serial3();
-				balls[index].oldX = balls[index].x;
-				balls[index].oldY = balls[index].y;
 				balls[index].oldRadius = balls[index].radius;
 				balls[index].x = SCREEN_WIDTH * PIXEL_LENGTH - bowlings_read_from_serial3();
 				balls[index].y = -1 * bowlings_read_from_serial3();
 				balls[index].radius = bowlings_read_from_serial3();
 			}
 			if (code == 3L) {
-				scores[1].oldScore = scores[1].newScore;
 				scores[1].newScore = bowlings_read_from_serial3();
-				scores[0].oldScore = scores[0].newScore;
 				scores[0].newScore = bowlings_read_from_serial3();
 			}
 //			if (typeChar == 'P') {

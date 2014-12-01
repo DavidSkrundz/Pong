@@ -56,4 +56,8 @@ void movePaddle(int index, long xAmount) {
 	collisionCircles[paddles[index].rightCircleIndex].x += xAmount;
 }
 
+void removePaddles() {
+	paddleCount = 0;
+}
+
 #endif

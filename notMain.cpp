@@ -101,6 +101,8 @@ void loop() {
 	} else if (preGame) {
 		playMenuSound(true);
 		drawMainMenu();
+		didDraw = false;
+		shouldDraw = false;
 	} else if (postGame) {
 		drawGameMenu();
 	}

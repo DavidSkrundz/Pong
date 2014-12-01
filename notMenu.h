@@ -9,7 +9,7 @@
 
 char * nameString = "BattlePong";
 int selection = 0;
-int oldSelection = 0;
+int oldSelection = 2;
 
 
 int _selection()
@@ -32,46 +32,45 @@ void drawMainMenu()
 	tft.setCursor(32, 40);
 	tft.setTextColor(RED);
 	tft.print(nameString);
-
-    // Draw music symbol so good
-//    tft.fillCircle(101, 106, 4, WHITE);
-//    tft.fillRect(101, 96, 2, 10, WHITE);
-//    tft.drawLine(101, 96, 104, 99, WHITE);
-//    tft.drawLine(102, 96, 105, 99, WHITE);
-//    tft.drawLine(103, 96, 106, 99, WHITE);
-
-
-    // Match start
-//    if (!selection)
-//    {
-    	tft.fillRect(32, 80, 64, 13, WHITE);
-    	tft.setCursor(50, 83);
-    	tft.setTextColor(BLACK);
-    	tft.print("Start");
-    	// Unselected Music Button
-//		tft.fillRect(32, 100, 64, 13, BLACK);
-//    	tft.drawRect(32, 100, 64, 13, WHITE);
-//    	tft.setTextColor(WHITE);
-//    	tft.setCursor(50, 103);
-//    	tft.print("Music");
-//    }
-//    else
-//    {
-//        tft.fillRect(32, 80, 64, 13, BLACK);
-//		tft.drawRect(32, 80, 64, 13, WHITE);
-//		tft.setCursor(50, 83);
-//		tft.setTextColor(WHITE);
-//		tft.print("Start");
-//		// Selected music button
-//		tft.fillRect(32, 100, 64, 13, WHITE);
-//		tft.setCursor(50, 103);
-//		tft.setTextColor(BLACK);
-//		tft.print("Music");
-//    }
-	if(joystickDidPress)
-	{
+	
+	// Match start
+	if (selection != oldSelection) {
+		oldSelection = selection;
+		if (!selection) {
+			tft.fillRect(32, 80, 64, 13, WHITE);
+			tft.setCursor(50, 83);
+			tft.setTextColor(BLACK);
+			tft.print("Start");
+			// Unselected Music Button
+			tft.fillRect(32, 100, 64, 13, BLACK);
+			tft.drawRect(32, 100, 64, 13, WHITE);
+			tft.setCursor(53, 103);
+			tft.setTextColor(WHITE);
+			tft.print("Host");
+		} else {
+			//Deselected Return
+			tft.fillRect(32, 80, 64, 13, BLACK);
+			tft.drawRect(32, 80, 64, 13, WHITE);
+			tft.setCursor(50, 83);
+			tft.setTextColor(WHITE);
+			tft.print("Start");
+			// Selected Main Menu
+			tft.fillRect(32, 100, 64, 13, WHITE);
+			tft.setCursor(53, 103);
+			tft.setTextColor(BLACK);
+			tft.print("Host");
+		}
+	}
+	if (joystickDidPress) {
 		joystickDidPress = false;
+		if (selection) {
+			isHost = true;
+		} else {
+			isHost = false;
+		}
 		startGame();
+		selection = 0;
+		oldSelection = 2;
 	}
 }
 
@@ -82,47 +81,47 @@ void drawGameMenu()
 	tft.setTextColor(RED);
 	tft.print("Pause");
 
-	if (!selection)
-	{
-		//Selected Return
-		tft.fillRect(32, 80, 64, 13, WHITE);
-		tft.setCursor(47, 83);
-		tft.setTextColor(BLACK);
-		tft.print("Return");
-		//Deselected Main Menu
-		tft.fillRect(32, 100, 64, 13, BLACK);
-		tft.drawRect(32, 100, 64, 13, WHITE);
-		tft.setCursor(38, 103);
-		tft.setTextColor(WHITE);
-		tft.print("Main menu");
+	if (selection != oldSelection) {
+		oldSelection = selection;
+		if (!selection)
+		{
+			//Selected Return
+			tft.fillRect(32, 80, 64, 13, WHITE);
+			tft.setCursor(47, 83);
+			tft.setTextColor(BLACK);
+			tft.print("Return");
+			//Deselected Main Menu
+			tft.fillRect(32, 100, 64, 13, BLACK);
+			tft.drawRect(32, 100, 64, 13, WHITE);
+			tft.setCursor(38, 103);
+			tft.setTextColor(WHITE);
+			tft.print("Main menu");
+		}
+		else
+		{
+			//Deselected Return
+			tft.fillRect(32, 80, 64, 13, BLACK);
+			tft.drawRect(32, 80, 64, 13, WHITE);
+			tft.setCursor(47, 83);
+			tft.setTextColor(WHITE);
+			tft.print("Return");
+			// Selected Main Menu
+			tft.fillRect(32, 100, 64, 13, WHITE);
+			tft.setCursor(38, 103);
+			tft.setTextColor(BLACK);
+			tft.print("Main Menu");
+		}
 	}
-	else
-	{
-		//Deselected Return
-		tft.fillRect(32, 80, 64, 13, BLACK);
-		tft.drawRect(32, 80, 64, 13, WHITE);
-		tft.setCursor(47, 83);
-		tft.setTextColor(WHITE);
-		tft.print("Return");
-		// Selected Main Menu
-		tft.fillRect(32, 100, 64, 13, WHITE);
-		tft.setCursor(38, 103);
-		tft.setTextColor(BLACK);
-		tft.print("Main Menu");
-	}
-
-	if(selection && joystickDidPress )
-	{
+	
+	if (joystickDidPress) {
 		joystickDidPress = false;
-		drawMainMenu();
-		endGame();
+		if (selection) {
+			endGame();
+		} else {
+			resumeGame();
+		}
 		selection = 0;
-	}
-
-	if(!selection && joystickDidPress)
-	{
-		joystickDidPress = false;
-		resumeGame();
+		oldSelection = 2;
 	}
 }
 

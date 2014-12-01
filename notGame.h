@@ -24,7 +24,11 @@ void initGame() {
 }
 
 void startMatch() {
-	createBall(20 * PIXEL_LENGTH, 20 * PIXEL_LENGTH, 3 * PIXEL_LENGTH,  0 * PIXEL_LENGTH, 6 * PIXEL_LENGTH);
+	if (isHost) {
+		createBall(20 * PIXEL_LENGTH, 20 * PIXEL_LENGTH, 3 * PIXEL_LENGTH,  0 * PIXEL_LENGTH, 6 * PIXEL_LENGTH);
+	} else {
+		createBall(-20 * PIXEL_LENGTH, -20 * PIXEL_LENGTH, 3 * PIXEL_LENGTH,  0 * PIXEL_LENGTH, 6 * PIXEL_LENGTH);
+	}
 }
 
 void startGame() {
@@ -60,6 +64,7 @@ void endGame() {
 	
 	resetSounds();
 	
+	removePaddles();
 	removeBalls();
 	removeCollisionRects();
 	removeCollisionCircles();
