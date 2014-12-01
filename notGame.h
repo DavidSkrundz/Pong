@@ -26,20 +26,20 @@ void initGame() {
 void startMatch() {
 	long code = -1;
 	if (isHost) {
-		bowlings_write_to_serial3(11UL);
-		while (code != 10) {
-			if (Serial3.available()) {
-				code = bowlings_read_from_serial3();
-			}
-		}
+//		Serial3.write(11);
+//		while (code != 10) {
+//			if (Serial3.available()) {
+//				code = Serial3.read();
+//			}
+//		}
 		createBall(20 * PIXEL_LENGTH, 20 * PIXEL_LENGTH, 3 * PIXEL_LENGTH,  0 * PIXEL_LENGTH, 6 * PIXEL_LENGTH);
 	} else {
-		while (code != 11) {
-			if (Serial3.available()) {
-				code = bowlings_read_from_serial3();
-			}
-		}
-		bowlings_write_to_serial3(10UL);
+//		while (code != 11) {
+//			if (Serial3.available()) {
+//				code = Serial3.read();
+//			}
+//		}
+		Serial3.write(10);
 		createBall(-20 * PIXEL_LENGTH, -20 * PIXEL_LENGTH, 3 * PIXEL_LENGTH,  0 * PIXEL_LENGTH, 6 * PIXEL_LENGTH);
 	}
 }

@@ -38,7 +38,7 @@ unsigned long bowlings_read_from_serial3() {
 }
 
 void waitForByteCount(int count) {
-	while (Serial.available() < count) {}
+	while (Serial.available() < 1) {}
 }
 
 void serialStep() {
