@@ -132,7 +132,6 @@ void drawWinState() {
 	}
 	if (joystickDidPress) {
 		joystickDidPress = false;
-		win = false;
 		endGame();
 		selection = 0;
 		oldSelection = 2;
@@ -154,7 +153,6 @@ void drawLoseState() {
 	}
 	if (joystickDidPress) {
 		joystickDidPress = false;
-		lose = false;
 		endGame();
 		selection = 0;
 		oldSelection = 2;

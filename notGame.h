@@ -74,6 +74,8 @@ void endGame() {
 	playingGame = false;
 	preGame = true;
 	postGame = false;
+	lose = false;
+	win = false;
 	
 	resetSounds();
 	
@@ -93,16 +95,16 @@ void gameCheck() {
 		playingGame = false;
 		// Local Player Wins
 		win = true;
-		writeInt(5);
-//		bowlings_write_to_serial3(5UL);
+//		writeInt(5);
+		bowlings_write_to_serial3(5UL);
 	}
 	if (scores[1].newScore >= WIN_SCORE) {
 		postGame = true;
 		playingGame = false;
 		// Other Player Wins
 		lose = true;
-		writeInt(6);
-//		bowlings_write_to_serial3(6UL);
+//		writeInt(6);
+		bowlings_write_to_serial3(6UL);
 	}
 }
 
