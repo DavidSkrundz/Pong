@@ -29,6 +29,8 @@ void drawMainMenu() {
 	tft.setTextColor(RED);
 	tft.print(nameString);
 
+	tft2.fillscreen(BLACK);
+
 	// Match start
 	if (selection != oldSelection) {
 		oldSelection = selection;
@@ -76,6 +78,10 @@ void drawGameMenu() {
 	tft.setTextColor(RED);
 	tft.print("Pause");
 
+	tft2.setCursor(50, 40);
+	tft2.setTextColor(RED);
+	tft2.print("Pause");
+
 	if (selection != oldSelection) {
 		oldSelection = selection;
 		if (!selection) {
@@ -121,6 +127,11 @@ void drawWinState() {
 	tft.setCursor(42, 40);
 	tft.setTextColor(RED);
 	tft.print("You Win!");
+
+	tft2.setCursor(42, 40);
+	tft2.setTextColor(RED);
+	tft2.print("You Lose");
+
 	if (selection != oldSelection) {
 		oldSelection = selection;
 		tft.fillScreen(BLACK);
@@ -132,7 +143,6 @@ void drawWinState() {
 	}
 	if (joystickDidPress) {
 		joystickDidPress = false;
-		win = false;
 		endGame();
 		selection = 0;
 		oldSelection = 2;
@@ -143,6 +153,10 @@ void drawLoseState() {
 	tft.setCursor(42, 40);
 	tft.setTextColor(RED);
 	tft.print("You Lose");
+
+	tft2.setCursor(42, 40);
+	tft2.setTextColor(RED);
+	tft2.print("You Win!");
 	if (selection != oldSelection) {
 		oldSelection = selection;
 		tft.fillScreen(BLACK);
@@ -154,7 +168,6 @@ void drawLoseState() {
 	}
 	if (joystickDidPress) {
 		joystickDidPress = false;
-		lose = false;
 		endGame();
 		selection = 0;
 		oldSelection = 2;
