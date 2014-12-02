@@ -20,13 +20,23 @@
 #define TFT_DC   7  // Data/Command Line For TFT
 #define TFT_RST  8  // Reset Line For TFT (Or Connect To +5V)
 
+#define SD_CS2    43  // Chip Select Line For SD Card
+#define TFT_CS2   42  // Chip Select Line For TFT Display
+#define TFT_DC2   41  // Data/Command Line For TFT
+#define TFT_RST2  40  // Reset Line For TFT (Or Connect To +5V)
+
 // Create the screen Hook
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
+Adafruit_ST7735 tft2 = Adafruit_ST7735(TFT_CS2, TFT_DC2, TFT_RST2);
 
 void initDisplay() {
 	// Initialize Screen
 	tft.initR(INITR_BLACKTAB);   // black tab
 	tft.fillScreen(BLACK);
+	
+	// Initialize Screen
+	tft2.initR(INITR_BLACKTAB);   // black tab
+	tft2.fillScreen(BLACK);
 }
 
 #endif

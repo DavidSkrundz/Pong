@@ -28,9 +28,7 @@ void drawMainMenu() {
 	tft.setCursor(32, 40);
 	tft.setTextColor(RED);
 	tft.print(nameString);
-
-	tft2.fillscreen(BLACK);
-
+	
 	// Match start
 	if (selection != oldSelection) {
 		oldSelection = selection;
