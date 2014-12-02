@@ -92,9 +92,9 @@ void loop() {
 		} else if (joystickGetHorizontal() < -50) {
 			movePaddle(0, -map(abs(joystickGetHorizontal()), 50, 512, 1, 5) * PIXEL_LENGTH);
 		}
-		if (joystickGetHorizontal2() > 50) {
-			movePaddle(1, map(joystickGetHorizontal2(), 50, 512, 1, 5) * PIXEL_LENGTH);
-		} else if (joystickGetHorizontal2() < -50) {
+		if (joystickGetHorizontal2() < -50) {
+			movePaddle(1, map(abs(joystickGetHorizontal2()), 50, 512, 1, 5) * PIXEL_LENGTH);
+		} else if (joystickGetHorizontal2() > 50) {
 			movePaddle(1, -map(abs(joystickGetHorizontal2()), 50, 512, 1, 5) * PIXEL_LENGTH);
 		}
 		

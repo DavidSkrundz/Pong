@@ -46,6 +46,7 @@ void startMatch() {
 
 void startGame() {
 	tft.fillScreen(BLACK);
+	tft2.fillScreen(BLACK);
 	playingGame = true;
 	preGame = false;
 	postGame = false;
@@ -57,6 +58,7 @@ void startGame() {
 
 void pauseGame() {
 	tft.fillScreen(BLACK);
+	tft2.fillScreen(BLACK);
 	playingGame = false;
 	preGame = false;
 	postGame = true;
@@ -64,6 +66,7 @@ void pauseGame() {
 
 void resumeGame() {
 	tft.fillScreen(BLACK);
+	tft2.fillScreen(BLACK);
 	playingGame = true;
 	preGame = false;
 	postGame = false;
@@ -71,6 +74,7 @@ void resumeGame() {
 
 void endGame() {
 	tft.fillScreen(BLACK);
+	tft2.fillScreen(BLACK);
 	playingGame = false;
 	preGame = true;
 	postGame = false;

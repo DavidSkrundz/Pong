@@ -102,79 +102,91 @@ void drawCircle(long x, long y, long r, int color) {
 	y = plancksToScreen(y);
 	r = plancksToScreen(r);
 	
-	int x2 = SCREEN_WIDTH * PIXEL_LENGTH - x;
+	int x2 = SCREEN_WIDTH - x;
 	int y2 = -y;
 	
 	// Check for out of bounds so we don't draw
-	if (x - r > SCREEN_WIDTH || y - r > SCREEN_HEIGHT || y + r < 0 || x + r < 0) { return; }
+	//	if (x - r > SCREEN_WIDTH || y - r > SCREEN_HEIGHT || y + r < 0 || x + r < 0) { return; }
 	
 	switch (r) {
 		case 2: {
-			tft.drawFastVLine(x - 2, y - 1, 3, color);
-			tft.drawFastVLine(x + 2, y - 1, 3, color);
-			tft.drawFastHLine(x - 1, y + 2, 3, color);
-			tft.drawFastHLine(x - 1, y - 2, 3, color);
+			if (!(x - r > SCREEN_WIDTH || y - r > SCREEN_HEIGHT || y + r < 0 || x + r < 0)) {
+				tft.drawFastVLine(x - 2, y - 1, 3, color);
+				tft.drawFastVLine(x + 2, y - 1, 3, color);
+				tft.drawFastHLine(x - 1, y + 2, 3, color);
+				tft.drawFastHLine(x - 1, y - 2, 3, color);
+			}
 			
-			tft2.drawFastVLine(x2 - 2, y2 - 1, 3, color);
-			tft2.drawFastVLine(x2 + 2, y2 - 1, 3, color);
-			tft2.drawFastHLine(x2 - 1, y2 + 2, 3, color);
-			tft2.drawFastHLine(x2 - 1, y2 - 2, 3, color);
+			if (!(x2 - r > SCREEN_WIDTH || y2 - r > SCREEN_HEIGHT || y2 + r < 0 || x2 + r < 0)) {
+				tft2.drawFastVLine(x2 - 2, y2 - 1, 3, color);
+				tft2.drawFastVLine(x2 + 2, y2 - 1, 3, color);
+				tft2.drawFastHLine(x2 - 1, y2 + 2, 3, color);
+				tft2.drawFastHLine(x2 - 1, y2 - 2, 3, color);
+			}
 			break;
 		}
 		case 3: {
-			tft.drawFastVLine(x - 3, y - 1, 3, color);
-			tft.drawFastVLine(x + 3, y - 1, 3, color);
-			tft.drawFastHLine(x - 1, y + 3, 3, color);
-			tft.drawFastHLine(x - 1, y - 3, 3, color);
-			tft.drawPixel(x - 2, y + 2, color);
-			tft.drawPixel(x - 2, y - 2, color);
-			tft.drawPixel(x + 2, y + 2, color);
-			tft.drawPixel(x + 2, y - 2, color);
+			if (!(x - r > SCREEN_WIDTH || y - r > SCREEN_HEIGHT || y + r < 0 || x + r < 0)) {
+				tft.drawFastVLine(x - 3, y - 1, 3, color);
+				tft.drawFastVLine(x + 3, y - 1, 3, color);
+				tft.drawFastHLine(x - 1, y + 3, 3, color);
+				tft.drawFastHLine(x - 1, y - 3, 3, color);
+				tft.drawPixel(x - 2, y + 2, color);
+				tft.drawPixel(x - 2, y - 2, color);
+				tft.drawPixel(x + 2, y + 2, color);
+				tft.drawPixel(x + 2, y - 2, color);
+			}
 			
-			tft2.drawFastVLine(x2 - 3, y2 - 1, 3, color);
-			tft2.drawFastVLine(x2 + 3, y2 - 1, 3, color);
-			tft2.drawFastHLine(x2 - 1, y2 + 3, 3, color);
-			tft2.drawFastHLine(x2 - 1, y2 - 3, 3, color);
-			tft2.drawPixel(x2 - 2, y2 + 2, color);
-			tft2.drawPixel(x2 - 2, y2 - 2, color);
-			tft2.drawPixel(x2 + 2, y2 + 2, color);
-			tft2.drawPixel(x2 + 2, y2 - 2, color);
+			if (!(x2 - r > SCREEN_WIDTH || y2 - r > SCREEN_HEIGHT || y2 + r < 0 || x2 + r < 0)) {
+				tft2.drawFastVLine(x2 - 3, y2 - 1, 3, color);
+				tft2.drawFastVLine(x2 + 3, y2 - 1, 3, color);
+				tft2.drawFastHLine(x2 - 1, y2 + 3, 3, color);
+				tft2.drawFastHLine(x2 - 1, y2 - 3, 3, color);
+				tft2.drawPixel(x2 - 2, y2 + 2, color);
+				tft2.drawPixel(x2 - 2, y2 - 2, color);
+				tft2.drawPixel(x2 + 2, y2 + 2, color);
+				tft2.drawPixel(x2 + 2, y2 - 2, color);
+			}
 			break;
 		}
 		case 7: {
-			tft.drawFastVLine(x - 7, y - 2, 5, color);
-			tft.drawFastVLine(x + 7, y - 2, 5, color);
-			tft.drawFastHLine(x - 2, y + 7, 5, color);
-			tft.drawFastHLine(x - 2, y - 7, 5, color);
-			tft.drawFastVLine(x - 6, y - 4, 2, color);
-			tft.drawFastVLine(x - 6, y + 3, 2, color);
-			tft.drawFastVLine(x + 6, y - 4, 2, color);
-			tft.drawFastVLine(x + 6, y + 3, 2, color);
-			tft.drawFastHLine(x - 4, y + 6, 2, color);
-			tft.drawFastHLine(x - 4, y - 6, 2, color);
-			tft.drawFastHLine(x + 3, y + 6, 2, color);
-			tft.drawFastHLine(x + 3, y - 6, 2, color);
-			tft.drawPixel(x - 5, y + 5, color);
-			tft.drawPixel(x + 5, y + 5, color);
-			tft.drawPixel(x - 5, y - 5, color);
-			tft.drawPixel(x + 5, y - 5, color);
+			if (!(x - r > SCREEN_WIDTH || y - r > SCREEN_HEIGHT || y + r < 0 || x + r < 0)) {
+				tft.drawFastVLine(x - 7, y - 2, 5, color);
+				tft.drawFastVLine(x + 7, y - 2, 5, color);
+				tft.drawFastHLine(x - 2, y + 7, 5, color);
+				tft.drawFastHLine(x - 2, y - 7, 5, color);
+				tft.drawFastVLine(x - 6, y - 4, 2, color);
+				tft.drawFastVLine(x - 6, y + 3, 2, color);
+				tft.drawFastVLine(x + 6, y - 4, 2, color);
+				tft.drawFastVLine(x + 6, y + 3, 2, color);
+				tft.drawFastHLine(x - 4, y + 6, 2, color);
+				tft.drawFastHLine(x - 4, y - 6, 2, color);
+				tft.drawFastHLine(x + 3, y + 6, 2, color);
+				tft.drawFastHLine(x + 3, y - 6, 2, color);
+				tft.drawPixel(x - 5, y + 5, color);
+				tft.drawPixel(x + 5, y + 5, color);
+				tft.drawPixel(x - 5, y - 5, color);
+				tft.drawPixel(x + 5, y - 5, color);
+			}
 			
-			tft2.drawFastVLine(x2 - 7, y2 - 2, 5, color);
-			tft2.drawFastVLine(x2 + 7, y2 - 2, 5, color);
-			tft2.drawFastHLine(x2 - 2, y2 + 7, 5, color);
-			tft2.drawFastHLine(x2 - 2, y2 - 7, 5, color);
-			tft2.drawFastVLine(x2 - 6, y2 - 4, 2, color);
-			tft2.drawFastVLine(x2 - 6, y2 + 3, 2, color);
-			tft2.drawFastVLine(x2 + 6, y2 - 4, 2, color);
-			tft2.drawFastVLine(x2 + 6, y2 + 3, 2, color);
-			tft2.drawFastHLine(x2 - 4, y2 + 6, 2, color);
-			tft2.drawFastHLine(x2 - 4, y2 - 6, 2, color);
-			tft2.drawFastHLine(x2 + 3, y2 + 6, 2, color);
-			tft2.drawFastHLine(x2 + 3, y2 - 6, 2, color);
-			tft2.drawPixel(x2 - 5, y2 + 5, color);
-			tft2.drawPixel(x2 + 5, y2 + 5, color);
-			tft2.drawPixel(x2 - 5, y2 - 5, color);
-			tft2.drawPixel(x2 + 5, y2 - 5, color);
+			if (!(x2 - r > SCREEN_WIDTH || y2 - r > SCREEN_HEIGHT || y2 + r < 0 || x2 + r < 0)) {
+				tft2.drawFastVLine(x2 - 7, y2 - 2, 5, color);
+				tft2.drawFastVLine(x2 + 7, y2 - 2, 5, color);
+				tft2.drawFastHLine(x2 - 2, y2 + 7, 5, color);
+				tft2.drawFastHLine(x2 - 2, y2 - 7, 5, color);
+				tft2.drawFastVLine(x2 - 6, y2 - 4, 2, color);
+				tft2.drawFastVLine(x2 - 6, y2 + 3, 2, color);
+				tft2.drawFastVLine(x2 + 6, y2 - 4, 2, color);
+				tft2.drawFastVLine(x2 + 6, y2 + 3, 2, color);
+				tft2.drawFastHLine(x2 - 4, y2 + 6, 2, color);
+				tft2.drawFastHLine(x2 - 4, y2 - 6, 2, color);
+				tft2.drawFastHLine(x2 + 3, y2 + 6, 2, color);
+				tft2.drawFastHLine(x2 + 3, y2 - 6, 2, color);
+				tft2.drawPixel(x2 - 5, y2 + 5, color);
+				tft2.drawPixel(x2 + 5, y2 + 5, color);
+				tft2.drawPixel(x2 - 5, y2 - 5, color);
+				tft2.drawPixel(x2 + 5, y2 - 5, color);
+			}
 			break;
 		}
 		default: {

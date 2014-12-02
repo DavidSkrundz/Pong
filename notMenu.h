@@ -32,38 +32,38 @@ void drawMainMenu() {
 	// Match start
 	if (selection != oldSelection) {
 		oldSelection = selection;
-		if (!selection) {
+//		if (!selection) {
 			tft.fillRect(32, 80, 64, 13, WHITE);
 			tft.setCursor(50, 83);
 			tft.setTextColor(BLACK);
 			tft.print("Start");
 			// Unselected Music Button
-			tft.fillRect(32, 100, 64, 13, BLACK);
-			tft.drawRect(32, 100, 64, 13, WHITE);
-			tft.setCursor(53, 103);
-			tft.setTextColor(WHITE);
-			tft.print("Host");
-		} else {
+//			tft.fillRect(32, 100, 64, 13, BLACK);
+//			tft.drawRect(32, 100, 64, 13, WHITE);
+//			tft.setCursor(53, 103);
+//			tft.setTextColor(WHITE);
+//			tft.print("Host");
+//		} else {
 			//Deselected Return
-			tft.fillRect(32, 80, 64, 13, BLACK);
-			tft.drawRect(32, 80, 64, 13, WHITE);
-			tft.setCursor(50, 83);
-			tft.setTextColor(WHITE);
-			tft.print("Start");
-			// Selected Main Menu
-			tft.fillRect(32, 100, 64, 13, WHITE);
-			tft.setCursor(53, 103);
-			tft.setTextColor(BLACK);
-			tft.print("Host");
-		}
+//			tft.fillRect(32, 80, 64, 13, BLACK);
+//			tft.drawRect(32, 80, 64, 13, WHITE);
+//			tft.setCursor(50, 83);
+//			tft.setTextColor(WHITE);
+//			tft.print("Start");
+////			// Selected Main Menu
+//			tft.fillRect(32, 100, 64, 13, WHITE);
+//			tft.setCursor(53, 103);
+//			tft.setTextColor(BLACK);
+//			tft.print("Host");
+//		}
 	}
 	if (joystickDidPress) {
 		joystickDidPress = false;
-		if (selection) {
+//		if (selection) {
 			isHost = true;
-		} else {
-			isHost = false;
-		}
+//		} else {
+//			isHost = false;
+//		}
 		startGame();
 		selection = 0;
 		oldSelection = 2;
@@ -133,6 +133,7 @@ void drawWinState() {
 	if (selection != oldSelection) {
 		oldSelection = selection;
 		tft.fillScreen(BLACK);
+		tft2.fillScreen(BLACK);
 		// Selected Main Menu
 		tft.fillRect(32, 100, 64, 13, WHITE);
 		tft.setCursor(38, 103);
@@ -158,6 +159,7 @@ void drawLoseState() {
 	if (selection != oldSelection) {
 		oldSelection = selection;
 		tft.fillScreen(BLACK);
+		tft2.fillScreen(BLACK);
 		// Selected Main Menu
 		tft.fillRect(32, 100, 64, 13, WHITE);
 		tft.setCursor(38, 103);
