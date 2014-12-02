@@ -36,9 +36,9 @@ void createPaddle(long y) {
 	paddles[paddleCount].oldX = paddles[paddleCount].x;
 	paddles[paddleCount].width = 20 * PIXEL_LENGTH;
 	paddles[paddleCount].oldWidth = paddles[paddleCount].width;
-	addCollisionRect(paddles[paddleCount].x, paddles[paddleCount].y, paddles[paddleCount].width, 5 * PIXEL_LENGTH); // SELF
-	addCollisionCircle(paddles[paddleCount].x, paddles[paddleCount].y + 2 * PIXEL_LENGTH, 2 * PIXEL_LENGTH);
-	addCollisionCircle(paddles[paddleCount].x + paddles[paddleCount].width - 1 * PIXEL_LENGTH, paddles[paddleCount].y + 2 * PIXEL_LENGTH, 2 * PIXEL_LENGTH);
+	addCollisionRect(paddles[paddleCount].x, paddles[paddleCount].y - 5 * PIXEL_LENGTH * (y < 0), paddles[paddleCount].width, 5 * PIXEL_LENGTH); // SELF
+	addCollisionCircle(paddles[paddleCount].x, paddles[paddleCount].y + 2 * PIXEL_LENGTH - 5 * PIXEL_LENGTH * (y < 0), 2 * PIXEL_LENGTH);
+	addCollisionCircle(paddles[paddleCount].x + paddles[paddleCount].width - 1 * PIXEL_LENGTH, paddles[paddleCount].y + 2 * PIXEL_LENGTH - 5 * PIXEL_LENGTH * (y < 0), 2 * PIXEL_LENGTH);
 	++paddleCount;
 }
 

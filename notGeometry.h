@@ -18,4 +18,12 @@ typedef struct {
 	long radius;
 } Circle;
 
+typedef struct {
+	long x;
+	long y;
+	long width;
+	long height;
+	bool active;
+} Block;
+
 #endif

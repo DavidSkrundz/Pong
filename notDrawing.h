@@ -7,6 +7,7 @@
 #include "notPaddle.h"
 #include "notCollisions.h"
 #include "notMath.h"
+#include "notScore2.h"
 
 void drawCircle(long x, long y, long r, int c);
 void drawRectangle(long x, long y, long w, long h, int c);
@@ -47,48 +48,59 @@ void drawPaddle() {
 	tft2.drawFastHLine(x - 1, y + 3, width + 2, WHITE);
 }
 
+void drawBlocks() {
+	for (int i = 0; i < blocksCount; ++i) {
+		if (!blocks[i].active) { continue ; }
+		if (blocks[i].y > 0) {
+			drawRectangle(blocks[i].x, blocks[i].y, blocks[i].width, blocks[i].height, WHITE);
+		} else {
+			drawRectangle2(SCREEN_WIDTH * PIXEL_LENGTH - blocks[i].x, -blocks[i].y, blocks[i].width, blocks[i].height, WHITE);
+		}
+	}
+}
+
 void drawScores() {
-	tft.setCursor(0, 0);
+	tft.setCursor(0, 150);
 	tft.setTextColor(BLACK);
 	char str1[3];
 	sprintf(str1, "%d", scores[0].oldScore);
 	tft.print(str1);
 	
-	tft.setCursor(SCREEN_WIDTH - 12, 0);
+	tft.setCursor(SCREEN_WIDTH - 12, 150);
 	char str2[3];
 	sprintf(str2, "%d", scores[1].oldScore);
 	tft.print(str2);
 	
 	tft.setTextColor(WHITE);
 	
-	tft.setCursor(0, 0);
+	tft.setCursor(0, 150);
 	char str3[3];
 	sprintf(str3, "%d", scores[0].newScore);
 	tft.print(str3);
 	
-	tft.setCursor(SCREEN_WIDTH - 12, 0);
+	tft.setCursor(SCREEN_WIDTH - 12, 150);
 	char str4[3];
 	sprintf(str4, "%d", scores[1].newScore);
 	tft.print(str4);
 	
 	
 	
-	tft2.setCursor(0, 0);
+	tft2.setCursor(0, 150);
 	tft2.setTextColor(BLACK);
 	sprintf(str1, "%d", scores[0].oldScore);
 	tft2.print(str1);
 	
-	tft2.setCursor(SCREEN_WIDTH - 12, 0);
+	tft2.setCursor(SCREEN_WIDTH - 12, 150);
 	sprintf(str2, "%d", scores[1].oldScore);
 	tft2.print(str2);
 	
 	tft2.setTextColor(WHITE);
 	
-	tft2.setCursor(0, 0);
+	tft2.setCursor(0, 150);
 	sprintf(str3, "%d", scores[0].newScore);
 	tft2.print(str3);
 	
-	tft2.setCursor(SCREEN_WIDTH - 12, 0);
+	tft2.setCursor(SCREEN_WIDTH - 12, 150);
 	sprintf(str4, "%d", scores[1].newScore);
 	tft2.print(str4);
 }
@@ -198,6 +210,10 @@ void drawCircle(long x, long y, long r, int color) {
 
 void drawRectangle(long x, long y, long w, long h, int c) {
 	tft.drawRect(plancksToScreen(x), plancksToScreen(y), plancksToScreen(w), plancksToScreen(h), c);
+}
+
+void drawRectangle2(long x, long y, long w, long h, int c) {
+	tft2.drawRect(plancksToScreen(x), plancksToScreen(y), plancksToScreen(w), plancksToScreen(h), c);
 }
 
 #endif

@@ -123,6 +123,15 @@ void moveBall(int index) {
 			ySpeed = -ySpeed;
 			balls[index].ySpeed = -balls[index].ySpeed;
 		}
+		collisions = collisionBlockWithBall(balls[index].x, balls[index].y, balls[index].radius);
+		if (collisions & 1 << 0) {
+			xSpeed = -xSpeed;
+			balls[index].xSpeed = -balls[index].xSpeed;
+		}
+		if (collisions & 1 << 1) {
+			ySpeed = -ySpeed;
+			balls[index].ySpeed = -balls[index].ySpeed;
+		}
 		// Circle Collisions
 		long collisionAngle = checkCircleCollisionWithCircle(balls[index].x, balls[index].y, balls[index].radius);
 		if (collisionAngle) {

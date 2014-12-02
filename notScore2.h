@@ -11,6 +11,8 @@ typedef struct {
 
 Score scores[SCORE_COUNT];
 
+void initScores();
+
 void localPlayerScored();
 void otherPlayerScored();
 

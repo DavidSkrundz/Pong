@@ -4,6 +4,7 @@
 #include <assert.h>
 
 #include "notGeometry.h"
+#include "notDrawing2.h"
 
 /*
  0) Wall
@@ -42,6 +43,82 @@ void removeCollisionRect(long x, long y) {
 void removeCollisionRects() {
 	collisionRectsCount = 0;
 }
+
+
+
+#define MAX_BLOCKS 12
+
+Block blocks[MAX_BLOCKS];
+int blocksCount = 0;
+
+void addBlock(long x, long y, long width, long height) {
+	assert(blocksCount < MAX_BLOCKS);
+	blocks[blocksCount].x = x;
+	blocks[blocksCount].y = y;
+	blocks[blocksCount].width = width;
+	blocks[blocksCount].height = height;
+	blocks[blocksCount].active = 1;
+	
+	++blocksCount;
+}
+
+void removeBlock(int i) {
+	if (blocks[i].y > 0) {
+		drawRectangle(blocks[i].x, blocks[i].y, blocks[i].width, blocks[i].height, BLACK);
+	} else {
+		drawRectangle2(SCREEN_WIDTH * PIXEL_LENGTH - blocks[i].x, -blocks[i].y, blocks[i].width, blocks[i].height, BLACK);
+	}
+	blocks[i].active = 0;
+}
+
+void removeBlock(long x, long y) {
+	for (int i = 0; i < blocksCount - 1; ++i) {
+		if (blocks[i].x == x && blocks[i].y == y) {
+			removeCollisionRect(i);
+		}
+	}
+}
+
+void removeBlocks() {
+	blocksCount = 0;
+}
+
+/*
+ 0000) No Collision
+ 0001) Horizontal Collision
+ 0010) Vertical Collision
+ 0011) Vert + Horz Collisions
+ */
+// Kind of broken checking if the ball is outside of the rect
+int collisionBlockWithBall(long x, long y, long r) {
+	for (int i = 0; i < blocksCount; ++i) {
+		Block currentBlock = blocks[i];
+		// Left
+		if (!currentBlock.active) continue;
+		if (x + r > currentBlock.x && x < currentBlock.x && y > currentBlock.y && y < currentBlock.y + currentBlock.height) {
+			removeBlock(i);
+			return 1 << 0;
+		}
+		// Right
+		if (x - r < currentBlock.x + currentBlock.width && x > currentBlock.x + currentBlock.width && y > currentBlock.y && y < currentBlock.y + currentBlock.height) {
+			removeBlock(i);
+			return 1 << 0;
+		}
+		// Top
+		if (y + r > currentBlock.y && y < currentBlock.y && x > currentBlock.x && x < currentBlock.x + currentBlock.width) {
+			removeBlock(i);
+			return 1 << 1;
+		}
+		// Bottom
+		if (y - r < currentBlock.y + currentBlock.height && y > currentBlock.y + currentBlock.height && x > currentBlock.x && x < currentBlock.x + currentBlock.width) {
+			removeBlock(i);
+			return 1 << 1;
+		}
+	}
+	return 0;
+}
+
+
 
 #define MAX_COLLISION_CIRCLES 4
 

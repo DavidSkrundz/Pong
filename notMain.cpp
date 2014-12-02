@@ -44,16 +44,16 @@ void setup() {
 	initJoystick();
 	
 	// Initialize SD Card
-//	Serial.print("Initializing SD card...");
-//	if (!SD.begin(SD_CS)) {
-//		Serial.println("failed!");
-//		while (1) {};  // Just wait, stuff exploded.
-//	}
-//	if (!card.init(SPI_HALF_SPEED, SD_CS)) {
-//		Serial.println("Raw SD Initialization has failed");
-//		while (1) {};  // Just wait, stuff exploded.
-//	}
-//	Serial.println(" OK!");
+	//	Serial.print("Initializing SD card...");
+	//	if (!SD.begin(SD_CS)) {
+	//		Serial.println("failed!");
+	//		while (1) {};  // Just wait, stuff exploded.
+	//	}
+	//	if (!card.init(SPI_HALF_SPEED, SD_CS)) {
+	//		Serial.println("Raw SD Initialization has failed");
+	//		while (1) {};  // Just wait, stuff exploded.
+	//	}
+	//	Serial.println(" OK!");
 	
 	initSound();
 }
@@ -98,14 +98,15 @@ void loop() {
 			movePaddle(1, -map(abs(joystickGetHorizontal2()), 50, 512, 1, 5) * PIXEL_LENGTH);
 		}
 		
-//		if (isHost) {
-			moveBalls();
-//		}
+		//		if (isHost) {
+		moveBalls();
+		//		}
 		
-//		serialStep();
+		//		serialStep();
 		
 		// Redraw Screen
 		drawCircles();
+		drawBlocks();
 		drawPaddle();
 		drawScores();
 	} else if (preGame) {
