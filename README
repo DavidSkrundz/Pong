@@ -1,0 +1,47 @@
+BattlePong is a player vs player combination of the games Pong and Breakout.
+All files required for running this game off of one arduino are included and 
+they can be uploaded to the arduino for playing with the help of the university 
+of Alberta arduino toolchain. Also enclosed are some Arduino wiring diagrams to 
+ensure proper pin assignment on your Arduino.
+
+
+Gameplay:
+
+The goal of the game is the same as with the popular classic game Pong.
+
+Each player has a paddle on their screen which is controlled with a joystick.
+They can move their paddle left or right but not up and down.
+
+A ball spawns initially on player one's side of the play area and is bounced 
+between the player's paddles and the side walls of the play area. If the ball 
+reaches the back of the player 1's (2's) side of the play area then player 2 (1) 
+scores. Each time that a player scores the ball will spawn again on the opposing
+player's side of the play area. The first player to score 5 times wins.
+
+Also included in this game are collideable and breakable bricks similar to the 
+game Breakout. When the ball hits a brick it will collide and rebound based on 
+the direction of collision and eliminate the brick from play. These bricks can 
+be placed on the field through the notGame.h file included. The base game only 
+includes a single line of bricks along the far edge of Player 1's screen.
+
+
+Code and Known Issues:
+
+While the current state of the game is playable and complete there are certain 
+issues in the code and some unused code.
+
+Inside of many files there is commented code which in the current state serves 
+no purpose. This code was used for a previous version of the game using serial 
+communication and is left as legacy code for if serial communication is fixed 
+in a later version. Also included is notSerial.h which contains all of the 
+serial communication methods previously used.
+
+There are some known issues with regards to destructable block placement and 
+performance.
+
+1. Blocks can currently only be properly placed on Player 1's screen owing to 
+   math issues from mapping Player 2's screen as on the negative y-axis.
+2. On occasion the ball will collide with 2 blocks at once if it collides where 
+   two blocks meet. In this case only 1 block will be properly removed from play.
+   One block will be drawn over and have it's collision box removed. The other 
+   block will have it's collision box removed but will remain drawn on the screen.

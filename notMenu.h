@@ -1,3 +1,8 @@
+/* Some sections of this code are commented out 
+   These sections represent functionality that 
+   be returned when serial communication is 
+   properly functioning. */
+
 #ifndef ArduinoTemplate_notMenu_h
 #define ArduinoTemplate_notMenu_h
 
@@ -37,7 +42,7 @@ void drawMainMenu() {
 			tft.setCursor(50, 83);
 			tft.setTextColor(BLACK);
 			tft.print("Start");
-			// Unselected Music Button
+			// Unselected Host Button
 //			tft.fillRect(32, 100, 64, 13, BLACK);
 //			tft.drawRect(32, 100, 64, 13, WHITE);
 //			tft.setCursor(53, 103);
@@ -50,7 +55,7 @@ void drawMainMenu() {
 //			tft.setCursor(50, 83);
 //			tft.setTextColor(WHITE);
 //			tft.print("Start");
-////			// Selected Main Menu
+//	        // Selected Host
 //			tft.fillRect(32, 100, 64, 13, WHITE);
 //			tft.setCursor(53, 103);
 //			tft.setTextColor(BLACK);
