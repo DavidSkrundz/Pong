@@ -1,3 +1,8 @@
+Section: EA1
+David Skrundz
+Ryan Huard
+
+
 BattlePong is a player vs player combination of the games Pong and Breakout.
 All files required for running this game off of one arduino are included and 
 they can be uploaded to the arduino for playing with the help of the university 
